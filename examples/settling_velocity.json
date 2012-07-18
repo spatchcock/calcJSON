@@ -1,0 +1,71 @@
+{
+
+  "name": "Settling velocity",
+
+  "definitions": [
+
+    {
+
+      "label"  : "particle_density",
+      "name"   : "Particle density",
+      "type"   : "decimal",
+      "role"   : "parameter",
+      "unit"   : "kg/m^3"
+
+    },
+
+    {
+
+      "label": "fluid_density",
+      "name" : "Fluid density",
+      "type" : "decimal",
+      "role" : "variable",
+      "unit" : "kg/m^3"
+
+    },
+
+    {
+
+      "label"  : "acceleration",
+      "name"   : "Acceleration due to gravity",
+      "type"   : "decimal",
+      "role"   : "parameter",
+      "default": 9.80665,
+      "unit"   : "m/s^2"
+
+    },
+
+    {
+
+      "label": "radius",
+      "name" : "Particle radius",
+      "type" : "decimal",
+      "role" : "variable",
+      "unit" : "m"
+
+    },
+
+    {
+
+      "label": "viscosity",
+      "name" : "Dynamic viscosity",
+      "type" : "decimal",
+      "role" : "variable",
+      "unit" : "N·s/m^2"
+
+    },
+
+
+    {
+
+      "label": "velocity",
+      "name" : "Velocity",
+      "type" : "decimal",
+      "role" : "output",
+      "unit" : "m/s"
+
+    }
+
+  ]
+
+}

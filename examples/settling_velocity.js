@@ -1,0 +1,1 @@
+velocity = ((particle_density - fluid_density) * acceleration * Math.pow(radius,2)) / (18.0 * viscosity);
