@@ -1,0 +1,216 @@
+{
+
+  "metadata": {
+
+    "name": "stationary_combustion_co2_emissions_cems",
+
+    "title": "Stationary combustion CO2 emissions via continuous emissions monitoring system (CEMS)",
+
+    "description": "A methodology for calculating CO2 emissions from stationary fuel combustion using Continuous Emissions Monitoring Systems (CEMS). Such systems permit CO2 emissions to be calculated on the basis of regular measurements of the volumetric flow rate and CO2 content of aggregate emissions from fuel burning facilities.\nThe data and algorithm are based on those outlined in Appendix F of Title 40 CFR Part 75 in the US EPA's Acid Rain Program, and support recommendations relating to the EPA's Mandatory Greenhouse Gas Reporting (Tier 4 approach) and the World Resources Institute Greenhouse Gas Protocol.\nEmissions calculations are based on the fuel properties provided in the included dataset as well as inputs representing the flow rate of stack emissions, the concentration of CO2 within the stack outflow and the duration of facility operation. The returned value represents the CO2 emitted (kg) during the operating time specified.\n If CO2 concentration is measured on a dry basis (i.e. stack moisture is removed prior to the analysis), the emissions calculation must include a correction for stack gas moisture content so that the volumetric concentration matches the volumetric flow basis. In this case, the moisture content of the stack emissions can be specified.\n If direct stack CO2 concentration data is not available, it can be back-calculated using O2 concentration data in which case the O2 concentration must be specified.",
+
+    "version": "0.0.1",
+
+    "licenses": [
+      
+      {
+        "id": "MIT",
+        "url": "http://opensource.org/licenses/MIT",
+      }
+
+    ],
+
+    "sources": [
+    
+      {
+        "name": "Technical Support Document for Stationary Fuel Combustion Emissions: Proposed Rule for Mandatory Reporting of Greenhouse Gases",
+        "web": "http://www.epa.gov/ghgreporting/documents/pdf/archived/tsd/TSD%20Stationary%20Combustion%202-02-09.pdf"
+      },
+
+      {
+        "name": "AMEE",
+        "web": "https://github.com/AMEE/datasets/tree/master/business/energy/stationaryCombustion/cems"
+      }
+
+    ],
+
+    "keywords": [
+      "fuel",
+      "EPA",
+      "stationary combustion",
+      "cems",
+      "greenhouse gas",
+      "emission",
+      "US"
+    ],
+
+    "maintainers": [
+
+      {
+        "name": "Andrew Berkeley",
+        "email": "andrew.berkeley.is@googlemail.com"
+      }
+
+    ],
+
+    "contributors": [
+      
+      {
+        "name": "Andrew Berkeley",
+        "email": "andrew.berkeley.is@googlemail.com"
+      }
+
+    ],
+
+    "files": [
+
+      {
+        "path": "emission.js"
+      }
+      
+    ]
+  },
+
+  "fields": [
+
+    {
+
+      "id"          : "fuel_type",
+      "label"       : "Primary fuel category",
+      "type"        : "string",
+      "role"        : "descriptor"
+      
+    },
+
+    {
+
+      "id"          : "fuel_subtype",
+      "label"       : "Subtype of fuel",
+      "type"        : "string",
+      "role"        : "descriptor"
+      
+    },
+
+    {
+
+      "id"          : "f_factor",
+      "label"       : "F-factor",
+      "type"        : "number",
+      "role"        : "parameter",
+      "unit"        : "ft^3/MBTU",
+      "description" : "Volume of dry flue gases per unit energy of fuel (F-factor)"
+      
+    },
+
+    {
+
+      "id"          : "fc_factor",
+      "label"       : "Fc-factor",
+      "type"        : "number",
+      "role"        : "parameter",
+      "unit"        : "ft^3/MBTU",
+      "description" : "Volume of CO2 per unit energy of fuel (Fc-factor)"
+      
+    },
+
+    {
+
+      "id"          : "stack_co2_concentration",
+      "label"       : "Average stack gas CO2 concentration",
+      "type"        : "number",
+      "role"        : "variable",
+      "unit"        : "%"
+      
+    },
+
+    {
+
+      "id"          : "stack_flow_rate",
+      "label"       : "Average stack gas flow rate",
+      "type"        : "number",
+      "role"        : "variable",
+      "unit"        : "ft^3/h"
+      
+    },
+
+    {
+
+      "id"          : "co2_density",
+      "label"       : "Density of CO2",
+      "type"        : "number",
+      "role"        : "variable",
+      "default"     : 0.0517104,
+      "unit"        : "kg/ft^3"
+      
+    },
+
+    {
+
+      "id"          : "stack_gas_moisture",
+      "label"       : "Stack gas moisture content",
+      "type"        : "number",
+      "role"        : "variable",
+      "default"     : 0.0,
+      "unit"        : "%"
+      
+    },
+
+    {
+
+      "id"          : "stack_o2_concentration",
+      "label"       : "Average stack gas O2 concentration",
+      "type"        : "number",
+      "role"        : "variable",
+      "unit"        : "%"
+      
+    },
+
+    {
+
+      "id"          : "ambient_o2_concentration",
+      "label"       : "Ambient concentration of O2",
+      "type"        : "number",
+      "role"        : "variable",
+      "unit"        : "%"
+      
+    },
+
+    {
+
+      "id"          : "operating_time",
+      "label"       : "Operating time",
+      "type"        : "number",
+      "role"        : "variable",
+      "unit"        : "h"
+      
+    },
+
+    {
+
+      "id"          : "co2",
+      "label"       : "CO2 emissions",
+      "type"        : "number",
+      "role"        : "output",
+      "unit"        : "kg"
+      
+    }
+
+  ],
+
+  "data": [
+
+    { "fuel_type": "coal",              "fuel_subtype": "anthracite",     "f_factor": 10100, "fc_factor": 1970 },
+    { "fuel_type": "coal",              "fuel_subtype": "bituminous",     "f_factor": 9780,  "fc_factor": 1800 },
+    { "fuel_type": "coal",              "fuel_subtype": "sub-bituminous", "f_factor": 9820,  "fc_factor": 1840 },
+    { "fuel_type": "coal",              "fuel_subtype": "lignite",        "f_factor": 9860,  "fc_factor": 1910 },
+    { "fuel_type": "petroleum coke",    "fuel_subtype": null,             "f_factor": 9830,  "fc_factor": 1850 },
+    { "fuel_type": "tire derived fuel", "fuel_subtype": null,             "f_factor": 10260, "fc_factor": 1800 },
+    { "fuel_type": "oil",               "fuel_subtype": null,             "f_factor": 9190,  "fc_factor": 1420 },
+    { "fuel_type": "gas",               "fuel_subtype": "natural gas",    "f_factor": 8710,  "fc_factor": 1040 },
+    { "fuel_type": "gas",               "fuel_subtype": "propane",        "f_factor": 8710,  "fc_factor": 1190 },
+    { "fuel_type": "gas",               "fuel_subtype": "butane",         "f_factor": 8710,  "fc_factor": 1250 },
+    { "fuel_type": "wood",              "fuel_subtype": "bark",           "f_factor": 9600,  "fc_factor": 1920 },
+    { "fuel_type": "wood",              "fuel_subtype": "wood residue",   "f_factor": 9240,  "fc_factor": 1830 }
+
+  ]
+
+}

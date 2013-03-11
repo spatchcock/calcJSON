@@ -1,0 +1,80 @@
+{
+
+  "metadata": {
+    
+    "files": [
+      
+      {
+        "path": "settling_velocity.js"
+      }
+
+    ]
+
+  },
+
+  "fields": [
+
+    {
+
+      "id"     : "particle_density",
+      "label"  : "Particle density",
+      "type"   : "number",
+      "role"   : "parameter",
+      "unit"   : "kg/m^3"
+
+    },
+
+    {
+
+      "id"   : "fluid_density",
+      "label": "Fluid density",
+      "type" : "number",
+      "role" : "variable",
+      "unit" : "kg/m^3"
+
+    },
+
+    {
+
+      "id"     : "acceleration",
+      "label"  : "Acceleration due to gravity",
+      "type"   : "number",
+      "role"   : "parameter",
+      "default": 9.80665,
+      "unit"   : "m/s^2"
+
+    },
+
+    {
+
+      "id"   : "radius",
+      "label": "Particle radius",
+      "type" : "number",
+      "role" : "variable",
+      "unit" : "m"
+
+    },
+
+    {
+
+      "id"   : "viscosity",
+      "label": "Dynamic viscosity",
+      "type" : "number",
+      "role" : "variable",
+      "unit" : "N·s/m^2"
+
+    },
+
+    {
+
+      "id": "velocity",
+      "label" : "Velocity",
+      "type" : "number",
+      "role" : "output",
+      "unit" : "m/s"
+
+    }
+
+  ]
+
+}

@@ -1,23 +1,65 @@
 {
 
-  "name": "Gravitational force",
+  "metadata": {
 
-  "definitions": [
+    "name": "gravitational_force",
+
+    "title": "Gravitational force",
+
+    "version": "0.0.1",
+
+    "licenses": [
+      
+      {
+        "id": "MIT",
+        "url": "http://opensource.org/licenses/MIT",
+      }
+
+    ],
+
+    "keywords": [
+      "physics",
+      "gravity",
+      "weight",
+      "planets"
+    ],
+
+    "maintainers": [
+
+      {
+        "name": "Andrew Berkeley",
+        "email": "andrew.berkeley.is@googlemail.com"
+      }
+
+    ],
+
+    "contributors": [
+      
+      {
+        "name": "Andrew Berkeley",
+        "email": "andrew.berkeley.is@googlemail.com"
+      }
+
+    ]
+
+  },
+
+  "fields": [
 
     {
 
-      "label": "planetary_body",
-      "name" : "Planetary body",
-      "type" : "text",
-      "role" : "context"
+      "id"    : "planetary_body",
+      "label" : "Planetary body",
+      "type"  : "string",
+      "role"  : "descriptor"
 
     },
 
     {
 
-      "label"  : "acceleration",
-      "name"   : "Acceleration due to gravity",
-      "type"   : "decimal",
+      "id"     : "acceleration",
+      "label"  : "Acceleration due to gravity",
+      "type"   : "number",
       "role"   : "parameter",
       "default": 9.80665,
       "unit"   : "m/s^2"
@@ -26,231 +68,54 @@
 
     {
 
-      "label": "mass",
-      "name" : "Mass",
-      "type" : "decimal",
-      "role" : "variable",
-      "unit" : "kg"
+      "id"    : "mass",
+      "label" : "Mass",
+      "type"  : "number",
+      "role"  : "variable",
+      "unit"  : "kg"
 
     },
 
     {
 
-      "label": "force",
-      "name" : "Force due to gravity",
-      "type" : "decimal",
-      "role" : "output",
-      "unit" : "N"
+      "id"    : "force",
+      "label" : "Force due to gravity",
+      "type"  : "number",
+      "role"  : "output",
+      "unit"  : "N"
 
     }
 
   ],
 
-  "filter": [
+  "data": [
 
-    "planetary_body"
+    { "planetary_body": "Earth",    "acceleration": 9.80665 },
+    { "planetary_body": "Moon",     "acceleration": 1.625   },
+    { "planetary_body": "Sun",      "acceleration": 274.1   },
+    { "planetary_body": "Venus",    "acceleration": 8.872   },
+    { "planetary_body": "Mars",     "acceleration": 3.78    },
+    { "planetary_body": "Jupiter",  "acceleration": 25.93   },
+    { "planetary_body": "Io",       "acceleration": 1.789   },
+    { "planetary_body": "Europa",   "acceleration": 1.314   },
+    { "planetary_body": "Ganymede", "acceleration": 1.426   },
+    { "planetary_body": "Callisto", "acceleration": 1.24    },
+    { "planetary_body": "Saturn",   "acceleration": 11.19   },
+    { "planetary_body": "Titan",    "acceleration": 1.3455  },
+    { "planetary_body": "Uranus",   "acceleration": 9.01    },
+    { "planetary_body": "Titania",  "acceleration": 0.379   },
+    { "planetary_body": "Oberon",   "acceleration": 0.347   },
+    { "planetary_body": "Neptune",  "acceleration": 11.28   },
+    { "planetary_body": "Triton",   "acceleration": 0.779   }, 
+    { "planetary_body": "Pluto",    "acceleration": 0.610   }
 
   ],
 
-  "algorithm": "force = mass * acceleration",
-
-  "data": [
-
-    {
-
-      "values": {
-
-        "planetary_body": "Earth",
-        "acceleration": 9.80665
-
-      }
-
-    },
-
-    {
-
-      "values": {
-
-        "planetary_body": "Moon",
-        "acceleration": 1.625
-
-      }
-
-    },
-
-    {
-
-      "values": {
-
-        "planetary_body": "Sun",
-        "acceleration": 274.1
-      }
-
-    },
-
-    {
-
-      "values": {
-
-        "planetary_body": "Venus",
-        "acceleration": 8.872
-
-      }
-
-    },
-
-    {
-
-      "values": {
-
-        "planetary_body": "Mars",
-        "acceleration": 3.78
-
-      }
-
-    },
-
-    {
-
-      "values": {
-
-        "planetary_body": "Jupiter",
-        "acceleration": 25.93
-
-      }
-
-    },
-
-    {
-
-      "values": {			
-
-        "planetary_body": "Io",
-        "acceleration": 1.789
-
-      }
-
-    },
-
-    {
-
-      "values": {
-
-        "planetary_body": "Europa",
-        "acceleration": 1.314
-
-      }
-
-    },
-
-    {
-
-      "values": {
-
-        "planetary_body": "Ganymede",
-        "acceleration": 1.426
-
-      }
-
-    },
-
-    {
-
-      "values": {
-
-        "planetary_body": "Callisto",
-        "acceleration": 1.24
-
-      }
-
-    },
-
-    {
-
-      "values": {
-
-        "planetary_body": "Saturn",
-        "acceleration": 11.19
-
-      }
-
-    },
-
-    {
-
-      "values": {
-
-        "planetary_body": "Titan",
-        "acceleration": 1.3455
-
-      }
-
-    },
-
-    {
-
-      "values": {
-
-        "planetary_body": "Uranus",
-        "acceleration": 9.01
-
-      }
-
-    },
-
-    {
-
-      "values": {
-
-        "planetary_body": "Titania",
-        "acceleration": 0.379
-
-      }
-
-    },
-
-    {
-
-      "values": {
-
-        "planetary_body": "Oberon",
-        "acceleration": 0.347
-
-      }
-
-    },
-
-    {
-
-      "values": {
-
-        "planetary_body": "Neptune",
-        "acceleration": 11.28
-
-      }
-
-    },
-
-    {
-
-      "values": {
-
-        "planetary_body": "Triton",
-        "acceleration": 0.779
-
-      }
-
-    },
-
-    {
-
-      "values": {
-
-        "planetary_body": "Pluto",
-        "acceleration": 0.610
-
-      }
-
+  "algorithms": [
+    
+    { 
+      "id": "force",
+      "script": "force = mass * acceleration;"
     }
 
   ]
