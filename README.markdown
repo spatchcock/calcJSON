@@ -8,7 +8,11 @@ Copyright (c) 2013 Andrew Berkeley.
 
 ## <a name="abstract"></a>Abstract
 
-CalcJSON is a data format suitable for the description and exchange of calculation algorithms, particularly those associated with datasets.
+CalcJSON is a data protocol suitable for the description and exchange of calculation algorithms, particularly those associated with datasets.
+
+The inspiration for this data format was the field of greenhouse gas emissions calculations which commonly involve calculations using an associated dataset of possible input values (e.g. fuel properties). At its core, however, the protocol enables the specification of a collection of model components and one or more algorithms which relate them with one another. It is therefore possible to describe generalised calculations without associated data.
+
+The protocol provides a standard method for describing model components (including type, default values and units), associated data, metadata and algorithms.
 
 ## <a name="license"></a>License
 
