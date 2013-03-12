@@ -44,13 +44,14 @@ The CalcJSON standard is licensed under a [GNU AFFERO GENERAL PUBLIC LICENSE](ht
 The CalcJSON data format has been developed with the following goals in mind:
 
 * To be suitable for the description and exchange of calculation methodologies and models.;
+* To support the bundling of model-associated data;
 * To be human- and computer-readable and self-documenting;
 * To be easy to use and widely supported;
 * To be compatible with existing protocols;
 
 To this end:
 
-* The data format uses and extends the []() and []() specfications.
+* The data format uses and extends the [JSON Table Schema](http://www.dataprotocols.org/en/latest/json-table-schema.html) data protocol and is compatible with the [Data Package Protocol](http://www.dataprotocols.org/en/latest/data-packages.html).
 * The data format uses JSON encoding [\[1\]](#1). This ensures that CalcJSON is able to be widely supported, and that the data format balances the need to be human and computer readable.
 * The data format uses Javascript for describing algorithms. There are at least 3 reasons for this:
   * Javascript is an interpretted, scripting language, and therefore has a relatively simple syntax (e.g. dynamic typing). This means that algorithms can be codified in a relatively human-readable way.
@@ -63,7 +64,7 @@ The the full CalcJSON data format is shown below. A [full description of the for
 
     {
       # A list of 'field' descriptions, each representing a single component of the model
-      # Follows and extends the JSON Table Schema data protocol
+      # Follows and extends the [JSON Table Schema](http://www.dataprotocols.org/en/latest/json-table-schema.html) data protocol
       "fields": [
         # A field description
         {
@@ -87,7 +88,7 @@ The the full CalcJSON data format is shown below. A [full description of the for
           "script": required string
         }
       ],
-      # An optional 'table' of data, following the JSON Table Schema data protocol
+      # An optional 'table' of data, following the [JSON Table Schema](http://www.dataprotocols.org/en/latest/json-table-schema.html) data protocol
       "data": [
         # A data record. Field ids follow those specified in the "fields" object
         {
@@ -95,7 +96,7 @@ The the full CalcJSON data format is shown below. A [full description of the for
         },
         ...more data records
       ],
-      # Optional metadata object following the Data Package Protocol.
+      # Optional metadata object following the [Data Package Protocol](http://www.dataprotocols.org/en/latest/data-packages.html).
       # This block and some elements within it are required if specifying algorithms in separate .js files
       # This block can be specified in a separate datapackage.json file for compatibility with the Data Package Protocol
       "metadata": {
@@ -159,13 +160,13 @@ The CalcJSON data format consists of four main sections:
 
 ### <a name="fields"></a>Fields
 
-In the CalcJSON data format, the "fields" section is used to describe the properties of indivdual model components. This approach is analogous to a table schema, and indeed, the specification herein follows and extends the JSON Table Schema data format of dataprotocols.org. While these fields can be thought of as analogous to table columns, the extended specification provided here defines 'output' components - that is, the outputs of model calculations. In this sense it is perhaps useful to think of tables defined within spreadsheets where some columns represent user inputs and others the outputs of formulas.
+In the CalcJSON data format, the "fields" section is used to describe the properties of indivdual model components. This approach is analogous to a table schema, and indeed, the specification herein follows and extends the [Data Package Protocol](http://www.dataprotocols.org/en/latest/data-packages.html) data format of dataprotocols.org. While these fields can be thought of as analogous to table columns, the extended specification provided here defines 'output' components - that is, the outputs of model calculations. In this sense it is perhaps useful to think of tables defined within spreadsheets where some columns represent user inputs and others the outputs of formulas.
 
 The "fields" section must be an array of objects which each contain some of the following keys.
 
 * **id**: Required. A unique machine readable name for the model component. This should use only alpha-numeric characters in addition to "_" and "-".
 * **label**: Required. A human readable name for the model component.
-* **type**: Required. The type of data represented by this model component. In principle this field should support all of the types specified by the JSON Table Schema data protocol, which extends the type set of JSON. The types most commonly application to calculation algorithms are probably "string", "number" (floating point), "integer" and "boolean".
+* **type**: Required. The type of data represented by this model component. In principle this field should support all of the types specified by the [Data Package Protocol](http://www.dataprotocols.org/en/latest/data-packages.html) data protocol, which extends the type set of JSON. The types most commonly application to calculation algorithms are probably "string", "number" (floating point), "integer" and "boolean".
 * **role**: Required. The "role" field specifies the role that this model component plays within calculations. Valid values are as follows:
   * **variable**: One of two types of model component which represent *inputs* to a calculation. Variables are intended to represent inputs which vary on a case-by-case basis and would typical require a user input.
   * **parameter**: The other type of calculation *input*, parameters represent data which is potentially fixed across calculations, e.g. constants. The practical implication of this as far as CalcJSON is concerned is that 'parameters' would be typically used to represent the calculation inputs which are represented within any associated 'tabular' data (see the "data" section). In this sense 'parameters' represent the data bundled with the model, in contrast to 'variables' which are always specified on the fly.
@@ -191,6 +192,7 @@ Algorithms should be written to the following specifications:
 * Model outputs should have their values explicitly set
 
 ### <a name="data"></a>Data
+A table of data associated with the calculation model can be specified using the "data" key. The structure of this data follows the [JSON Table Schema](http://www.dataprotocols.org/en/latest/json-table-schema.html) data protocol, taking to the format of an array of data records each comprising key/value pairs. Keys should correspond to ids defined in the "fields" sections, and should be limited to those defined as "descriptor" or "parameter".
 
 ### <a name="metadata"></a>Metadata
 
